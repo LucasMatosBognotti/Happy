@@ -21,6 +21,7 @@ class OrphanagesController {
     const orphanagesRepository = getRepository(Orphanage);
 
     const requestImages = req.files as Express.Multer.File[];
+    
     const images = requestImages.map(image => {
       return { path: image.filename }
     });
@@ -32,7 +33,7 @@ class OrphanagesController {
       about,
       instructions,
       opening_hours,
-      open_on_weekends,
+      open_on_weekends: open_on_weekends === 'true',
       images,
     }
 
